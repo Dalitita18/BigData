@@ -6,4 +6,4 @@ One Vs All is implemented as an estimator. For the base classifier, it takes ins
 Predictions are made by evaluating each binary classifier and the index of the safest classifier is generated as a label.
 
 ## Output
-![one-vs-rest](data/one-vs-rest.png)
+![one-vs-rest](one-vs-rest.png)

@@ -9,4 +9,4 @@ In the multilayer perceptron a 2 phases can be distinguished:
 - Learning in which the errors obtained at the exit of the perceptron are propagated backwards (backpropagation) with the objective of modifying the weights of the connections so that the estimated value of the network is increasingly similar to the real one, this approach is made by the gradient error function.
 
 ## Output
-![multilayer-perceptron](data/mlp.png)
+![multilayer-perceptron](mlp.png)

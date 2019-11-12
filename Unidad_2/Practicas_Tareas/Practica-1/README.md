@@ -8,12 +8,21 @@ In spark.ml we provide the flexibility to calculate pairwise correlations among 
 
 **Correlation** computes the correlation matrix for the input Dataset of Vectors using the specified method. The output will be a DataFrame that contains the correlation matrix of the column of vectors.
 
+## Output
+![correlation](data/correlation.png)
+
 ## Hypothesis Testing
 
 Hypothesis testing is a powerful tool in statistics to determine whether a result is statistically significant, whether this result occurred by chance or not. spark.ml currently supports Pearson’s Chi-squared ( χ2) tests for independence.
 
 ChiSquareTest conducts Pearson’s independence test for every feature against the label. For each feature, the (feature, label) pairs are converted into a contingency matrix for which the Chi-squared statistic is computed. All label and feature values must be categorical.
 
+## Output
+![chi-square](data/chisquare.png)
+
 ## Summarizer
 
 We provide vector column summary statistics for Dataframe through Summarizer. Available metrics are the column-wise max, min, mean, variance, and number of nonzeros, as well as the total count.
+
+## Output
+![summarizer](data/summarizer.png)

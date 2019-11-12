@@ -4,3 +4,6 @@ The one against all classification is a method that involves training with N dis
 
 One Vs All is implemented as an estimator. For the base classifier, it takes instances of Classifier and creates a binary classification problem for each of the k classes. The classifier for class i is trained to predict whether the label is i or not, distinguishing class i from all other classes.
 Predictions are made by evaluating each binary classifier and the index of the safest classifier is generated as a label.
+
+## Output
+![one-vs-rest](data/one-vs-rest.png)

@@ -2,7 +2,7 @@ import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
 
 // Cargue los datos almacenados en formato LIBSVM como un DataFrame.
-val data = spark.read.format("libsvm").load("/sample_multiclass_classification_data.txt")
+val data = spark.read.format("libsvm").load("sample_multiclass_classification_data.txt")
 
 // Divide los datos en tren y prueba
 val splits = data.randomSplit(Array(0.6, 0.4), seed = 1234L)

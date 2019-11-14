@@ -51,3 +51,10 @@ val evaluator = new MulticlassClassificationEvaluator().setMetricName("accuracy"
 
 // Se imprime el resultado de la presicion
 println(s"Test set accuracy = ${evaluator.evaluate(predictionAndLabels)}")
+
+// d. Funcion matematica de entrenamiento
+// La funcion que utiliza para hacer el ponderado del peso de las neuronas es la funcion sigmoidal,
+// que es una funcion de activacion posee un rango entre 0 y 1.
+ 
+// e. Funcion matematica de error
+// Scala utiliza una estimacion de error RDD 

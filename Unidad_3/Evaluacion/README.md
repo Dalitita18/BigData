@@ -44,7 +44,7 @@ We need to create a new dataframe using an csv files that contains the data we w
 ```scala
 val data  = spark.read.option("header","true").option("inferSchema", "true").format("csv").load("Wholesale customers data.csv")
 ```
-Before we have our dataframe created we need create other dataframe again but this time selecting a few columns from the orginal dataframe and we'll call it as feature_data.
+Before we have our dataframe created we need create other dataframe again but this time selecting a few columns from the original dataframe and we'll call it as feature_data.
 
 ```scala
 val feature_data = (data.select($"Fresh", $"Milk",$"Grocery", $"Frozen", $"Detergents_Paper", $"Delicassen"))
@@ -79,3 +79,6 @@ Well, once we set all before we print the clusters that Kmeans find.
 println("Cluster Centers: ")
 model.clusterCenters.foreach(println)
 ```
+
+### Output
+![Kmeans](kmeans.png)

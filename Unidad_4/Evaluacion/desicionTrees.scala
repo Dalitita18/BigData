@@ -21,7 +21,7 @@ data.printSchema()
 
 //Convertimos los valores de la columna y a valores numericos
 val change1 = data.withColumn("y",when(col("y").equalTo("yes"),1).otherwise(col("y")))
-val change2 = change1.withColumn("y",when(col("y").equalTo("no"),2).otherwise(col("y")))
+val change2 = change1.withColumn("y",when(col("y").equalTo("no"),0).otherwise(col("y")))
 val newDF = change2.withColumn("y",'y.cast("Int"))
 
 // (label, features)

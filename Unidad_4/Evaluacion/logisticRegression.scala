@@ -27,7 +27,7 @@ val logregdata = logregdataall.na.drop()
 
 //Convertimos los valores de la columna y a valores numericos
 val logData = logregdata.withColumn("y",when(col("y").equalTo("yes"),1).otherwise(col("y")))
-val logData2 = logData.withColumn("y",when(col("y").equalTo("no"),2).otherwise(col("y")))
+val logData2 = logData.withColumn("y",when(col("y").equalTo("no"),0).otherwise(col("y")))
 val newDF = logData2.withColumn("y",'y.cast("Int"))
 
 // Se importar unas librerias 
@@ -53,7 +53,7 @@ val dataIndexed = featuresLabel.select("label","features")
 val Array(training, test) = dataIndexed.randomSplit(Array(0.7, 0.3), seed = 12345)
 
 // Se inicia un modelo LogisticRegression
-val logisticAlgorithm = new LogisticRegression().setMaxIter(10).setRegParam(0.3).setElasticNetParam(0.8)
+val logisticAlgorithm = new LogisticRegression().setMaxIter(10).setRegParam(0.3).setElasticNetParam(0.8).setFamily("multinomial")
 
 // Fit del modelo
 val logisticModel = logisticAlgorithm.fit(training)
@@ -74,3 +74,4 @@ println(metrics.confusionMatrix)
 
 // Calcula el porcentaje de presicion del modelo
 metrics.accuracy
+

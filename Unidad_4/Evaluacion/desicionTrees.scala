@@ -2,7 +2,7 @@ import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.classification.DecisionTreeClassificationModel
 import org.apache.spark.ml.classification.DecisionTreeClassifier
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
-import org.apache.spark.ml.feature.{VectorAssembler, StringIndexer, VectorIndexer, OneHotEncoder}
+import org.apache.spark.ml.feature.{VectorAssembler, StringIndexer, VectorIndexer, OneHotEncoder,IndexToString}
 import org.apache.spark.ml.linalg.Vectors
 import org.apache.spark.sql.SparkSession
 
@@ -26,9 +26,7 @@ val newDF = change2.withColumn("y",'y.cast("Int"))
 
 // (label, features)
 // Se Genera un nuevo vector que contiene las caracteristicas que seran evaluadas
-val vectorFeatures = (new VectorAssembler()
-                  .setInputCols(Array("balance","day","duration","pdays","previous"))
-                  .setOutputCol("features"))
+val vectorFeatures = (new VectorAssembler().setInputCols(Array("balance","day","duration","pdays","previous")).setOutputCol("features"))
 
 // Se transforman los features usando el dataframe
 val features = vectorFeatures.transform(newDF)

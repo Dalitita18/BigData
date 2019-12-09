@@ -19,7 +19,7 @@ data.printSchema()
 
 //Convertimos los valores de la columna y a valores numericos
 val dataColumn = data.withColumn("y",when(col("y").equalTo("yes"),1).otherwise(col("y")))
-val dataColumn2 = dataColumn.withColumn("y",when(col("y").equalTo("no"),2).otherwise(col("y")))
+val dataColumn2 = dataColumn.withColumn("y",when(col("y").equalTo("no"),0).otherwise(col("y")))
 val newcolumn = dataColumn2.withColumn("y",'y.cast("Int"))
 
 // Se genera un vector que contine las caracteristicas que se van a evaluar
@@ -41,7 +41,7 @@ val train = splits(0)
 val test = splits(1)
 
 // Se establece la configuracion de las capas para el modelo 
-val layers = Array[Int](5,2,2,4)
+val layers = Array[Int](5,4,2,2)
 
 // Se configura el entrenador del algoritmo Multilayer
 val trainer = new MultilayerPerceptronClassifier().setLayers(layers).setBlockSize(128).setSeed(1234L).setMaxIter(100)

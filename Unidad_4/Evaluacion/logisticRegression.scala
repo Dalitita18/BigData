@@ -36,7 +36,7 @@ import org.apache.spark.ml.linalg.Vectors
 
 // (label, features)
 // Se Genera un nuevo vector que contiene las caracteristicas que seran evaluadas
-val assembler = (new VectorAssembler()
+val vectorFeatures = (new VectorAssembler()
                   .setInputCols(Array("balance","day","duration","pdays","previous"))
                   .setOutputCol("features"))
 
@@ -59,7 +59,7 @@ val logisticAlgorithm = new LogisticRegression().setMaxIter(10).setRegParam(0.3)
 val logisticModel = logisticAlgorithm.fit(training)
 
 // Se procesa el modelo con los datos de pruebas
-val results = model.transform(test)
+val results = logisticModel.transform(test)
 
 // Se importa una libreria para probar el modelo
 import org.apache.spark.mllib.evaluation.MulticlassMetrics

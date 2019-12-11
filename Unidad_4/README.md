@@ -1,4 +1,4 @@
-## Proyecto Final
+## Final Project
 
 - [**Introduction**](#introduction)
 - [**Algorithms**](#algorithms)

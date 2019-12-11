@@ -10,6 +10,10 @@ import org.apache.spark.sql.SparkSession
 import org.apache.log4j._
 Logger.getLogger("org").setLevel(Level.ERROR)
 
+// Para medir el rendimiento 
+val runtime = Runtime.getRuntime
+val startTimeMillis = System.currentTimeMillis()
+
 // Se inicia una sesion en spark
 val spark = SparkSession.builder().getOrCreate()
 
@@ -74,3 +78,13 @@ println(s"Test Error = ${(1.0 - accuracy)}")
 val treeModel = model.stages(2).asInstanceOf[DecisionTreeClassificationModel]
 
 println(s"Learned classification tree model:\n ${treeModel.toDebugString}")
+
+val mb = 0.000001
+println("Used Memory: " + (runtime.totalMemory - runtime.freeMemory) * mb)
+println("Free Memory: " + runtime.freeMemory * mb)
+println("Total Memory: " + runtime.totalMemory * mb)
+println("Max Memory: " + runtime.maxMemory * mb)
+
+
+val endTimeMillis = System.currentTimeMillis()
+val durationSeconds = (endTimeMillis - startTimeMillis) / 1000

@@ -8,6 +8,10 @@ import org.apache.spark.sql.SparkSession
 import org.apache.log4j._
 Logger.getLogger("org").setLevel(Level.ERROR)
 
+// Para medir el rendimiento 
+val runtime = Runtime.getRuntime
+val startTimeMillis = System.currentTimeMillis()
+
 // Se inicia una sesion en spark
 val spark = SparkSession.builder().getOrCreate()
 
@@ -74,4 +78,14 @@ println(metrics.confusionMatrix)
 
 // Calcula el porcentaje de presicion del modelo
 metrics.accuracy
+
+val mb = 0.000001
+println("Used Memory: " + (runtime.totalMemory - runtime.freeMemory) * mb)
+println("Free Memory: " + runtime.freeMemory * mb)
+println("Total Memory: " + runtime.totalMemory * mb)
+println("Max Memory: " + runtime.maxMemory * mb)
+
+
+val endTimeMillis = System.currentTimeMillis()
+val durationSeconds = (endTimeMillis - startTimeMillis) / 1000
 
